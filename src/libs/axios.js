@@ -4,11 +4,24 @@
 
 import axios from 'axios'
 import config from '@config/index'
+import Utils from '@libs/utils'
 import ElementUI from 'element-ui'
 axios.install = (Vue) => {
   axios.defaults.baseURL = config.apiRoot
   let loadingInstance
   axios.interceptors.request.use(function (config) {
+    console.log(config)
+    if (config.module && config.module === 'admin') {
+      if (config.method === 'get') {
+        config.params || (config.params = {})
+        config.params['user_token'] = Utils.getStorage('token')
+      }
+      if (config.method === 'post') {
+        config.body || (config.body = {})
+        config.body['user_token'] = Utils.getStorage('token')
+      }
+      console.log(config.params)
+    }
     loadingInstance = ElementUI.Loading.service({ fullscreen: true })
     return config
   }, function (error) {

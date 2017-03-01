@@ -3,6 +3,7 @@
  */
 
 import Login from '@libs/login'
+import CATEGORY from './category'
 
 const ADMIN = [
   {
@@ -19,7 +20,10 @@ const ADMIN = [
           name: 'adminLogin'
         })
       }
-    }
+    },
+    children: [
+      ...CATEGORY
+    ]
   },
   {
     path: '/admin/login',

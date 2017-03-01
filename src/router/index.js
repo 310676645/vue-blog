@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import admin from './modules/admin'
+import admin from './modules/admin/index'
 
 Vue.use(Router)
 

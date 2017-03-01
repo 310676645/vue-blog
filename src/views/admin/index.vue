@@ -9,6 +9,7 @@
             mode="horizontal"
             default-active="navActive"
             :router="true">
+            <el-menu-item>博客后台管理系统</el-menu-item>
             <el-menu-item index="/admin">首页</el-menu-item>
           </el-menu>
         </div>
@@ -25,9 +26,9 @@
           </el-menu>
         </el-col>
       <el-col :span="20">
+        <router-view></router-view>
       </el-col>
     </el-row>
-    <router-view></router-view>
   </div>
 </template>
 <style lang="scss" rel="stylesheet/scss" type="text/css" scoped>
