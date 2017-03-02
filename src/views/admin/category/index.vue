@@ -1,6 +1,15 @@
 <template>
   <div>
-    <el-button type="primary" icon="plus" style="margin-bottom: 15px">新增</el-button>
+    <router-link :to="{
+      name: 'categoryAdd'
+    }">
+      <el-button
+        type="primary"
+        icon="plus"
+        style="margin-bottom: 15px">
+        新增
+      </el-button>
+    </router-link>
     <el-table
       :data="tableData"
       border

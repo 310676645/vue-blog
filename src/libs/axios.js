@@ -17,6 +17,7 @@ axios.install = (Vue) => {
       }
       if (config.method === 'post' || config.method === 'delete') {
         config.data || (config.data = {})
+        console.log(config)
         config.data['user_token'] = Utils.getStorage('token')
       }
     }
