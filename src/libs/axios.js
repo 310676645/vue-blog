@@ -10,17 +10,15 @@ axios.install = (Vue) => {
   axios.defaults.baseURL = config.apiRoot
   let loadingInstance
   axios.interceptors.request.use(function (config) {
-    console.log(config)
     if (config.module && config.module === 'admin') {
       if (config.method === 'get') {
         config.params || (config.params = {})
         config.params['user_token'] = Utils.getStorage('token')
       }
-      if (config.method === 'post') {
-        config.body || (config.body = {})
-        config.body['user_token'] = Utils.getStorage('token')
+      if (config.method === 'post' || config.method === 'delete') {
+        config.data || (config.data = {})
+        config.data['user_token'] = Utils.getStorage('token')
       }
-      console.log(config.params)
     }
     loadingInstance = ElementUI.Loading.service({ fullscreen: true })
     return config
@@ -35,6 +33,10 @@ axios.install = (Vue) => {
   axios.interceptors.response.use(function (response) {
     loadingInstance.close()
     let data = response.data
+    if (data.code === 100001) {
+      window.location.href = window.location.origin + '/#/admin/login'
+      return Promise.reject(data)
+    }
     if (data.code === 0) {
       return Promise.resolve(data)
     } else {

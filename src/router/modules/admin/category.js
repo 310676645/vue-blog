@@ -4,6 +4,14 @@
 
 const CATEGORY = [
   {
+    path: '/',
+    beforeEnter (to, form, next) {
+      next({
+        name: 'adminCategory'
+      })
+    }
+  },
+  {
     path: 'category',
     name: 'adminCategory',
     component: (reslove) => {

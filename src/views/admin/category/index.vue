@@ -53,14 +53,40 @@
             this.tableData = data
           }
         }).catch(error => {
-          console.log(error)
+          this.$message({
+            type: 'error',
+            message: error.msg
+          })
         })
       },
       handleEdit (index, row) {
-        console.log(index, row)
       },
       handleDelete (index, row) {
-        console.log(index, row)
+        this.$confirm('您确定要删除此分类吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'info'
+        }).then(() => {
+          this.deleteCategory(row.category_id).then(() => {
+            this.tableData.splice(index, 1)
+          }).catch(() => {})
+        }).catch(() => {})
+      },
+      deleteCategory (categoryId) {
+        return new Promise((resolve, reject) => {
+          this.$axios.delete(`admin/category/${categoryId}`, {
+            module: 'admin'
+          }).then(res => {
+            this.$message({
+              type: 'success',
+              message: res.msg
+            })
+            resolve()
+          }).catch(error => {
+            this.$message.error(error.msg || error)
+            reject()
+          })
+        })
       },
       init () {
         this.getCategory()

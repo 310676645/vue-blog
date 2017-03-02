@@ -30,15 +30,6 @@ const ADMIN = [
     name: 'adminLogin',
     component: (reslove) => {
       require(['@views/admin/login/index.vue'], reslove)
-    },
-    beforeEnter: (to, from, next) => {
-      if (!Login.isLogin()) {
-        next()
-      } else {
-        next({
-          name: 'admin'
-        })
-      }
     }
   }
 ]

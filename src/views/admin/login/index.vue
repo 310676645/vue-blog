@@ -52,7 +52,10 @@
                 showClose: true,
                 message: res.msg
               })
-              Login.success(res.res.data.user_token)
+              Login.success(res.data.user_token)
+              this.$router.replace({
+                name: 'adminCategory'
+              })
             }).catch((error) => {
               this.$message({
                 showClose: true,

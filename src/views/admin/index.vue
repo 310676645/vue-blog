@@ -7,9 +7,9 @@
             theme="dark"
             class="el-menu-demo"
             mode="horizontal"
-            default-active="navActive"
+            :default-active="navActive"
             :router="true">
-            <el-menu-item>博客后台管理系统</el-menu-item>
+            <el-menu-item index="/">博客后台管理系统</el-menu-item>
             <el-menu-item index="/admin">首页</el-menu-item>
           </el-menu>
         </div>
@@ -20,7 +20,8 @@
           <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
-            default-activ="menuActive">
+            :default-active="menuActive"
+            :router="true">
             <el-menu-item index="/admin/category"><i class="el-icon-menu"></i>分类管理</el-menu-item>
             <el-menu-item index="/admin/active"><i class="el-icon-setting"></i>文章管理</el-menu-item>
           </el-menu>
