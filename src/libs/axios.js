@@ -10,12 +10,13 @@ axios.install = (Vue) => {
   axios.defaults.baseURL = config.apiRoot
   let loadingInstance
   axios.interceptors.request.use(function (config) {
+    let method = config.method
     if (config.module && config.module === 'admin') {
-      if (config.method === 'get') {
+      if (method === 'get') {
         config.params || (config.params = {})
         config.params['user_token'] = Utils.getStorage('token')
       }
-      if (config.method === 'post' || config.method === 'delete') {
+      if (method === 'post' || method === 'delete' || method === 'put') {
         config.data || (config.data = {})
         console.log(config)
         config.data['user_token'] = Utils.getStorage('token')

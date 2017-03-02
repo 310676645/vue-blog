@@ -42,9 +42,6 @@
     </el-table>
   </div>
 </template>
-<style lang="scss" rel="stylesheet/scss" type="text/css" scoped>
-
-</style>
 <script type="text/ecmascript-6">
   export default {
     data () {
@@ -69,6 +66,12 @@
         })
       },
       handleEdit (index, row) {
+        this.$router.push({
+          name: 'categoryEdit',
+          params: {
+            categoryId: row.category_id
+          }
+        })
       },
       handleDelete (index, row) {
         this.$confirm('您确定要删除此分类吗?', '提示', {
