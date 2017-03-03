@@ -69,6 +69,12 @@
         })
       },
       handleEdit (index, row) {
+        this.$router.push({
+          name: 'categoryEdit',
+          params: {
+            categoryId: row.category_id
+          }
+        })
       },
       handleDelete (index, row) {
         this.$confirm('您确定要删除此分类吗?', '提示', {

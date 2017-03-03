@@ -24,6 +24,13 @@ const CATEGORY = [
     component: (reslove) => {
       require(['@views/admin/category/add.vue'], reslove)
     }
+  },
+  {
+    path: 'category/edit/:categoryId',
+    name: 'categoryEdit',
+    component: (reslove) => {
+      require(['@views/admin/category/edit.vue'], reslove)
+    }
   }
 ]
 
