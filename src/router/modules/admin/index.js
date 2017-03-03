@@ -3,7 +3,8 @@
  */
 
 import Login from '@libs/login'
-import CATEGORY from './category'
+import category from './category'
+import article from './article'
 
 const ADMIN = [
   {
@@ -22,7 +23,8 @@ const ADMIN = [
       }
     },
     children: [
-      ...CATEGORY
+      ...category,
+      ...article
     ]
   },
   {
