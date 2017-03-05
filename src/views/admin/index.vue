@@ -36,6 +36,9 @@
   @import "./../../assets/sass/modules/var";
   .#{$baseName}-main {
     padding: $gutter;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-y: auto;
   }
 </style>
 <script type="text/ecmascript-6">

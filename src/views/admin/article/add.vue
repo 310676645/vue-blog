@@ -72,14 +72,15 @@
               message: '请输入文章标题',
               trigger: 'blur'
             }
-          ]
-          /* category_id: [
+          ],
+          category_id: [
             {
+              type: 'number',
               required: true,
               message: '请选择文章分类',
               trigger: 'change'
             }
-          ] */
+          ]
         }
       }
     },
@@ -114,7 +115,7 @@
             this.categoryList = data
           }
         }).catch((error) => {
-          console.log(error)
+          this.$message.error(error.msg || error)
         })
       },
       onSubmit () {

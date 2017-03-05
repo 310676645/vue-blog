@@ -1,6 +1,8 @@
 body {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  min-width: 1200px;
+  overflow-y: auto;
 }
 .el-menu {
   border-radius: 0;
