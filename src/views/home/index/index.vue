@@ -1,18 +1,26 @@
 <template>
   <div>
-    <el-card
+    <router-link
       v-for="(item, key) in articleList"
       :key="key"
-      class="md-card"
-      :body-style="{ padding: '0px' }">
-      <div style="padding: 14px;">
-        <span>{{ item.article_title }}</span>
-        <el-tag type="primary">{{ item.category_name }}</el-tag>
-        <div class="bottom clearfix md-card__time">
-          <i class="md-card__icon el-icon-time"></i><time class="time">创建时间:{{ item.article_create_time |　dateFormat('yyyy-MM-dd hh:mm:ss') }}</time>
+      :to="{
+        name: 'articleDetails',
+        params: {
+          articleId: item.article_id
+        }
+      }">
+      <el-card
+        class="md-card"
+        :body-style="{ padding: '0px' }">
+        <div style="padding: 14px;">
+          <span>{{ item.article_title }}</span>
+          <el-tag type="primary">{{ item.category_name }}</el-tag>
+          <div class="bottom clearfix md-card__time">
+            <i class="md-card__icon el-icon-time"></i><time class="time">创建时间:{{ item.article_create_time |　dateFormat('yyyy-MM-dd hh:mm:ss') }}</time>
+          </div>
         </div>
-      </div>
-    </el-card>
+      </el-card>
+    </router-link>
     <el-pagination
       v-if="page.count > 1"
       layout="prev, pager, next"

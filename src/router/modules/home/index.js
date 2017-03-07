@@ -2,7 +2,8 @@
  * Created by songjd on 17/3/1.
  */
 
-const home = [
+import article from './article'
+const HOME = [
   {
     path: '/home',
     name: 'home',
@@ -15,8 +16,9 @@ const home = [
         component: (reslove) => {
           require(['@views/home/index/index.vue'], reslove)
         }
-      }
+      },
+      ...article
     ]
   }
 ]
-export default home
+export default HOME

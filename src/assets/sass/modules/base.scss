@@ -3,10 +3,20 @@ body {
   margin: 0 auto;
   min-width: 1200px;
   overflow-y: auto;
+  font-family: "Microsoft YaHei";
+  color: $text-default-color;
+  font-size: 14px;
+}
+a {
+  text-decoration: none;
+  color: $text-default-color;
 }
 .el-menu {
   border-radius: 0;
 }
 .el-message-box__wrapper {
   background: rgba(0,0,0,0.5);
+}
+.#{$baseName}-link {
+  text-decoration: none;
 }

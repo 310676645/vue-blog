@@ -6,6 +6,7 @@ import home from './modules/home/index'
 Vue.use(Router)
 
 export default new Router({
+  linkActiveClass: 'md-link',
   routes: [
     {
       path: '/',
