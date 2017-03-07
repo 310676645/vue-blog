@@ -8,7 +8,6 @@
           mode="horizontal"
           :router="true">
           <el-menu-item index="/home">首页</el-menu-item>
-          <el-menu-item index="/article">全部文章</el-menu-item>
         </el-menu>
       </el-col>
       <router-view class="md-main"></router-view>

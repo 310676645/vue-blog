@@ -5,10 +5,8 @@
 const ARTICLE = [
   {
     path: '/',
-    beforeEnter (to, form, next) {
-      next({
-        name: 'article'
-      })
+    redirect: {
+      name: 'article'
     }
   },
   {
