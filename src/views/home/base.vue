@@ -10,7 +10,13 @@
           <el-menu-item index="/home">全部文章</el-menu-item>
         </el-menu>
       </el-col>
-      <router-view class="md-main"></router-view>
+      <transition
+        enter-active-class="animated bounceInLeft"
+        leave-active-class="animated bounceOutRight" mode="out-in">
+        <router-view
+          class="md-main">
+        </router-view>
+      </transition>
     </el-row>
 </template>
 <style lang="scss" rel="stylesheet/scss" type="text/css" scoped>
