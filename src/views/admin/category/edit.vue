@@ -32,6 +32,11 @@
           }
         }
       },
+      computed: {
+        categoryId () {
+          return this.$route.params.categoryId
+        }
+      },
       methods: {
         validate () {
           return new Promise((resolve, reject) => {
@@ -42,7 +47,7 @@
           })
         },
         updateCategory () {
-          this.$axios.put(`admin/category/${this.formData.category_id}`, this.formData, {
+          this.$axios.put(`admin/category/${this.categoryId}`, this.formData, {
             module: 'admin'
           }).then((res) => {
             this.$message({
@@ -54,19 +59,23 @@
             this.$message.error(error.msg || error)
           })
         },
+        getCategory () {
+          this.$axios.get(`admin/category/${this.categoryId}`, {
+            params: this.formData,
+            module: 'admin'
+          }).then((res) => {
+            let data = res.data
+            if (data) {
+              this.formData = data
+            }
+          }).catch((error) => {
+            this.$message.error(error.msg || error)
+          })
+        },
         onSubmit () {
           this.validate().then(() => {
             this.updateCategory()
           }).catch(() => {})
-        },
-        getCategory () {
-          this.$axios.get(`admin/category/${this.$route.params.categoryId}`, {
-            module: 'admin'
-          }).then((res) => {
-            this.formData = res.data
-          }).catch((error) => {
-            this.$message.error(error.msg || error)
-          })
         },
         init () {
           this.getCategory()

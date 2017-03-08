@@ -3,11 +3,14 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import 'animate.css/animate.min.css'
 import '@assets/sass/app.scss'
 import axios from '@libs/axios'
+import filters from '@/filters'
 
 Vue.use(ElementUI)
 Vue.use(axios)
+Vue.use(filters)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

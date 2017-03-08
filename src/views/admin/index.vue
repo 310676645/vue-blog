@@ -23,7 +23,7 @@
             :default-active="menuActive"
             :router="true">
             <el-menu-item index="/admin/category"><i class="el-icon-menu"></i>分类管理</el-menu-item>
-            <el-menu-item index="/admin/active"><i class="el-icon-setting"></i>文章管理</el-menu-item>
+            <el-menu-item index="/admin/article"><i class="el-icon-setting"></i>文章管理</el-menu-item>
           </el-menu>
         </el-col>
       <el-col :span="20">
@@ -36,14 +36,23 @@
   @import "./../../assets/sass/modules/var";
   .#{$baseName}-main {
     padding: $gutter;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-y: auto;
   }
 </style>
 <script type="text/ecmascript-6">
   export default{
     data () {
       return {
-        navActive: '/admin',
-        menuActive: '/admin/category'
+        navActive: '/admin'
+      }
+    },
+    computed: {
+      menuActive () {
+        let path = this.$route.path.substr(1)
+        let pathArr = path.split('/')
+        return '/' + pathArr[0] + '/' + pathArr[1]
       }
     },
     components: {}
