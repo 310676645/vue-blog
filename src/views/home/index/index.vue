@@ -1,5 +1,9 @@
 <template>
   <div>
+    <placeholder-text
+      text="12323"
+      v-if="articleList.length === 0">
+    </placeholder-text>
     <router-link
       v-for="(item, key) in articleList"
       :key="key"
@@ -30,7 +34,6 @@
       :page-size="articleListParams.page_size"
       @current-change="handleCurrentChange">
     </el-pagination>
-  </div>
   </div>
 </template>
 <style lang="scss" rel="stylesheet/scss" type="text/css" scoped>

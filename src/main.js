@@ -7,10 +7,12 @@ import 'animate.css/animate.min.css'
 import '@assets/sass/app.scss'
 import axios from '@libs/axios'
 import filters from '@/filters'
+import components from '@/components'
 
 Vue.use(ElementUI)
 Vue.use(axios)
 Vue.use(filters)
+Vue.use(components)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
