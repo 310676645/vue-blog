@@ -54,23 +54,64 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      class="md-mt-15"
+      v-if="page.count > 1"
+      layout="prev, pager, next"
+      :total="page.total"
+      :page-count="page.count"
+      :current-page="currentPage"
+      :page-size="articleListParams.page_size"
+      @current-change="handleCurrentChange">
+    </el-pagination>
   </div>
 </template>
 <script type="text/ecmascript-6">
   export default {
     data () {
       return {
+        articleListParams: {
+          page_size: 20
+        },
+        page: {
+          total: 0,
+          count: 0
+        },
         tableData: []
       }
     },
+    computed: {
+      currentPage () {
+        return Number(this.$route.query.page) || 1
+      }
+    },
     methods: {
+      handleCurrentChange (val) {
+        this.$router.push({
+          path: '/admin/article',
+          query: {
+            page: val
+          }
+        })
+      },
       getArticleList () {
         this.$axios.get('admin/article', {
-          module: 'admin'
+          module: 'admin',
+          params: {
+            page: this.currentPage,
+            ...this.articleListParams
+          }
         }).then(res => {
           let data = res.data
-          if (data && data.length > 0) {
-            this.tableData = data
+          if (!data) return false
+          if (data.list && data.list.length > 0) {
+            this.tableData = data.list
+          }
+          if (data.total) {
+            this.page.total = data.total
+          }
+          if (data.page_count) {
+            this.page.count = data.page_count
           }
         }).catch(error => {
           this.$message({
@@ -119,6 +160,11 @@
       },
       init () {
         this.getArticleList()
+      }
+    },
+    watch: {
+      '$route' () {
+        this.init()
       }
     },
     created () {

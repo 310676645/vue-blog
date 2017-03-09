@@ -1,0 +1,29 @@
+@charset "utf-8";
+$i: 0;
+@while $i <= 25 {
+  .#{$baseName}-mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+  .#{$baseName}-mr-#{$i} {
+    margin-right: #{$i}px;
+  }
+  .#{$baseName}-mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+  .#{$baseName}-ml-#{$i} {
+    margin-left: #{$i}px;
+  }
+  .#{$baseName}-pt-#{$i} {
+    padding-top: #{$i}px;
+  }
+  .#{$baseName}-pr-#{$i} {
+    padding-right: #{$i}px;
+  }
+  .#{$baseName}-pb-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+  .#{$baseName}-pl-#{$i} {
+    padding-left: #{$i}px;
+  }
+  $i: $i+5
+}
