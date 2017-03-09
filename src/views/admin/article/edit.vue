@@ -41,7 +41,7 @@
             <el-input
               v-model="formData.article_content"
               type="textarea"
-              rows="10">
+              :rows="10">
             </el-input>
           </el-form-item>
           <el-form-item>
