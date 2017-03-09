@@ -1,14 +1,7 @@
 <template>
     <el-row>
       <el-col :span="24">
-        <el-menu
-          theme="dark"
-          :default-active="activeIndex"
-          class="el-menu-demo"
-          mode="horizontal"
-          :router="true">
-          <el-menu-item index="/home">全部文章</el-menu-item>
-        </el-menu>
+        <md-header></md-header>
       </el-col>
       <el-col :span="24">
         <div class="md-container">
@@ -27,21 +20,21 @@
   @import "./../../assets/sass/modules/var";
   .#{$baseName}-container {
     position: relative;
-  }
-  .#{$baseName}-main {
-    position: absolute;
     padding: $gutter;
     box-sizing: border-box;
     width: 100%;
+  }
+  .#{$baseName}-main {
+    position: absolute;
+    left: $gutter;
+    right: $gutter;
+    margin-bottom: $gutter;
+    padding: $gutter;
+    box-sizing: border-box;
     overflow-y: auto;
+    border: 1px solid #d1dbe5;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
   }
 </style>
-<script type="text/ecmascript-6">
-  export default {
-    data () {
-      return {
-        activeIndex: '/home'
-      }
-    }
-  }
-</script>

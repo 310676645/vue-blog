@@ -3,8 +3,10 @@
  */
 
 import placeholderText from './placeholder-text.vue'
+import header from './header.vue'
 const components = {}
 components.install = (Vue) => {
-  Vue.component('placeholder-text', placeholderText)
+  Vue.component('md-placeholder-text', placeholderText)
+  Vue.component('md-header', header)
 }
 export default components

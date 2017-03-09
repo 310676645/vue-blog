@@ -1,45 +1,117 @@
 <template>
   <div>
-    <placeholder-text
-      text="12323"
-      v-if="articleList.length === 0">
-    </placeholder-text>
-    <router-link
-      v-for="(item, key) in articleList"
-      :key="key"
-      :to="{
-        name: 'articleDetails',
-        params: {
-          articleId: item.article_id
-        }
-      }">
-      <el-card
-        class="md-card"
-        :body-style="{ padding: '0px' }">
-        <div style="padding: 14px;">
-          <span>{{ item.article_title }}</span>
-          <el-tag type="primary">{{ item.category_name }}</el-tag>
-          <div class="bottom clearfix md-card__time">
-            <i class="md-card__icon el-icon-time"></i><time class="time">创建时间:{{ item.article_create_time |　dateFormat('yyyy-MM-dd hh:mm:ss') }}</time>
-          </div>
-        </div>
-      </el-card>
-    </router-link>
-    <el-pagination
-      v-if="page.count > 1"
-      layout="prev, pager, next"
-      :total="page.total"
-      :page-count="page.count"
-      :current-page="currentPage"
-      :page-size="articleListParams.page_size"
-      @current-change="handleCurrentChange">
-    </el-pagination>
+    <el-row
+      :gutter="15">
+      <el-col
+        :span="20">
+        <md-placeholder-text
+          text="暂无文章"
+          v-if="articleList.length === 0">
+        </md-placeholder-text>
+        <router-link
+          v-for="(item, key) in articleList"
+          :key="key"
+          :to="{
+            name: 'articleDetails',
+            params: {
+              articleId: item.article_id
+            }
+          }">
+          <el-card
+            class="md-card"
+            :body-style="{ padding: '0px' }">
+            <div style="padding: 14px;">
+              <span>{{ item.article_title }}</span>
+              <el-tag type="primary">{{ item.category_name }}</el-tag>
+              <div class="bottom clearfix md-card__time">
+                <i class="md-card__icon el-icon-time"></i><time class="time">创建时间:{{ item.article_create_time |　dateFormat('yyyy-MM-dd hh:mm:ss') }}</time>
+              </div>
+            </div>
+          </el-card>
+        </router-link>
+        <el-pagination
+          v-if="page.count > 1"
+          layout="prev, pager, next"
+          :total="page.total"
+          :page-count="page.count"
+          :current-page="currentPage"
+          :page-size="articleListParams.page_size"
+          @current-change="handleCurrentChange">
+        </el-pagination>
+      </el-col>
+      <el-col
+        :span="4">
+        <el-card
+          class="md-bage-list">
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">a</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+          <el-badge :value="12" class="md-bage-list__item">
+            <el-button size="small">javascript</el-button>
+          </el-badge>
+          <el-badge :value="3" class="md-bage-list__item">
+            <el-button size="small">html</el-button>
+          </el-badge>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <style lang="scss" rel="stylesheet/scss" type="text/css" scoped>
   @import "./../../../assets/sass/modules/var";
   .#{$baseName}-card {
-    margin-bottom: 15px;
+    margin-bottom: $gutter;
     cursor: pointer;
     &__time {
       margin-top: 5px;
@@ -48,6 +120,13 @@
     }
     &__icon {
       margin-right: 5px;
+    }
+  }
+  .#{$baseName}-bage-list {
+    min-height: 300px;
+    &__item {
+      margin-right: 20px;
+      margin-bottom: 20px;
     }
   }
 </style>
